@@ -9,18 +9,44 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: 'Linux', link: '/linux/basics' },
       { text: 'Docker', link: '/docker/proxy' },
+      { text: '实践问题', link: '/issues/llm/fastsafetensors-oom' },
     ],
     sidebar: [
       {
         text: 'Linux',
         items: [
-          { text: '基础指令手册', link: '/linux/basics' },
+          {
+            text: '基础命令',
+            collapsed: false,
+            items: [
+              { text: '基础指令手册', link: '/linux/basics' },
+            ],
+          },
+          {
+            text: '网络',
+            collapsed: false,
+            items: [
+              { text: 'SSH 端口转发', link: '/linux/network/ssh-port-forwarding' },
+            ],
+          },
         ],
       },
       {
         text: 'Docker',
         items: [
           { text: '代理配置', link: '/docker/proxy' },
+        ],
+      },
+      {
+        text: '实践问题',
+        items: [
+          {
+            text: '大语言模型部署',
+            collapsed: false,
+            items: [
+              { text: 'fastsafetensors 导致内存溢出', link: '/issues/llm/fastsafetensors-oom' },
+            ],
+          },
         ],
       },
     ],

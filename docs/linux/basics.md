@@ -1047,7 +1047,10 @@ scp -P 2222 file.txt user@host:/path/
 | `-p` | 指定端口 |
 | `-i` | 指定私钥文件 |
 | `-L` | 本地端口转发 |
+| `-R` | 远程端口转发 |
+| `-D` | 动态端口转发（SOCKS 代理） |
 | `-N` | 不执行远程命令（用于端口转发） |
+| `-f` | 后台运行 |
 
 **示例：**
 
@@ -1062,8 +1065,10 @@ ssh -p 2222 user@hostname
 ssh -i ~/.ssh/mykey.pem user@hostname
 
 # 本地端口转发（访问本地 8080 转发到远程 80）
-ssh -L 8080:localhost:80 user@hostname
+ssh -NL 8080:localhost:80 user@hostname
 ```
+
+> 端口转发功能（`-L` / `-R` / `-D`）详见：[SSH 端口转发详解](/linux/network/ssh-port-forwarding)
 
 ---
 
