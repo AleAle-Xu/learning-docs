@@ -7,18 +7,23 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
+      { text: 'Linux', link: '/linux/basics' },
       { text: 'Docker', link: '/docker/proxy' },
     ],
-    sidebar: {
-      '/docker/': [
-        {
-          text: 'Docker',
-          items: [
-            { text: '代理配置', link: '/docker/proxy' },
-          ],
-        },
-      ],
-    },
+    sidebar: [
+      {
+        text: 'Linux',
+        items: [
+          { text: '基础指令手册', link: '/linux/basics' },
+        ],
+      },
+      {
+        text: 'Docker',
+        items: [
+          { text: '代理配置', link: '/docker/proxy' },
+        ],
+      },
+    ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/aleale-xu/learning-docs' },
     ],

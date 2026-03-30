@@ -1,0 +1,61 @@
+/* ===== 首页 Hero 背景渐变 ===== */
+.VPHero {
+  background: linear-gradient(135deg, #0f0c29 0%, #1a1a4e 40%, #24243e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 星点光晕装饰 */
+.VPHero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Hero 文字颜色适配深色背景 */
+.VPHero .name {
+  color: #fff !important;
+}
+
+.VPHero .text {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.VPHero .tagline {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* ===== 整体页面背景（非首页） ===== */
+:root {
+  --vp-c-bg: #fafbff;
+  --vp-c-bg-soft: #f0f2ff;
+}
+
+.dark {
+  --vp-c-bg: #0d0d1a;
+  --vp-c-bg-soft: #13132a;
+}
+
+/* ===== 品牌色调整为蓝紫色系 ===== */
+:root {
+  --vp-c-brand-1: #6366f1;
+  --vp-c-brand-2: #818cf8;
+  --vp-c-brand-3: #a5b4fc;
+  --vp-button-brand-bg: #6366f1;
+  --vp-button-brand-hover-bg: #4f46e5;
+}
+
+/* ===== Feature 卡片微调 ===== */
+.VPFeature {
+  border: 1px solid rgba(99, 102, 241, 0.15) !important;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.VPFeature:hover {
+  border-color: rgba(99, 102, 241, 0.45) !important;
+  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.1);
+}
