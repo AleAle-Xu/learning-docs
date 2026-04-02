@@ -1,6 +1,60 @@
-/* ===== 首页：整体布局容器也跟随深色，避免滚动后露白 ===== */
+/* ===== 品牌色：蓝紫色系 ===== */
+:root {
+  --vp-c-brand-1: #6366f1;
+  --vp-c-brand-2: #818cf8;
+  --vp-c-brand-3: #a5b4fc;
+  --vp-button-brand-bg: #6366f1;
+  --vp-button-brand-hover-bg: #4f46e5;
+
+  /* 首页专用变量（浅色模式） */
+  --home-bg: linear-gradient(160deg, #f0f4ff 0%, #e8edff 45%, #f5f3ff 100%);
+  --home-nav-bg: rgba(255, 255, 255, 0.80);
+  --home-nav-border: rgba(99, 102, 241, 0.15);
+  --home-nav-text: #1e1b4b;
+  --home-nav-text-hover: #6366f1;
+  --home-hero-name: #1e1b4b;
+  --home-hero-text: rgba(30, 27, 75, 0.75);
+  --home-hero-tagline: rgba(30, 27, 75, 0.55);
+  --home-card-bg: rgba(255, 255, 255, 0.75);
+  --home-card-border: rgba(99, 102, 241, 0.18);
+  --home-card-bg-hover: rgba(255, 255, 255, 0.95);
+  --home-card-border-hover: rgba(99, 102, 241, 0.5);
+  --home-card-title: #1e1b4b;
+  --home-card-details: rgba(30, 27, 75, 0.65);
+  --home-glow-a: rgba(99, 102, 241, 0.12);
+  --home-glow-b: rgba(139, 92, 246, 0.10);
+
+  /* 文档页背景 */
+  --vp-c-bg: #fafbff;
+  --vp-c-bg-soft: #f0f2ff;
+}
+
+/* 深色模式覆盖 */
+.dark {
+  --vp-c-bg: #0d0d1a;
+  --vp-c-bg-soft: #13132a;
+
+  --home-bg: linear-gradient(160deg, #0f0c29 0%, #1e1b4b 45%, #1a1a3e 100%);
+  --home-nav-bg: rgba(15, 12, 41, 0.80);
+  --home-nav-border: rgba(255, 255, 255, 0.08);
+  --home-nav-text: rgba(255, 255, 255, 0.9);
+  --home-nav-text-hover: #fff;
+  --home-hero-name: #fff;
+  --home-hero-text: rgba(255, 255, 255, 0.85);
+  --home-hero-tagline: rgba(255, 255, 255, 0.6);
+  --home-card-bg: rgba(255, 255, 255, 0.06);
+  --home-card-border: rgba(255, 255, 255, 0.12);
+  --home-card-bg-hover: rgba(255, 255, 255, 0.10);
+  --home-card-border-hover: rgba(99, 102, 241, 0.5);
+  --home-card-title: #fff;
+  --home-card-details: rgba(255, 255, 255, 0.65);
+  --home-glow-a: rgba(99, 102, 241, 0.18);
+  --home-glow-b: rgba(139, 92, 246, 0.14);
+}
+
+/* ===== 首页：整体布局容器背景 ===== */
 .Layout:has(.VPHome) {
-  background: linear-gradient(160deg, #0f0c29 0%, #1e1b4b 45%, #1a1a3e 100%);
+  background: var(--home-bg);
   min-height: 100vh;
 }
 
@@ -8,7 +62,7 @@
   background: transparent;
 }
 
-/* Hero 区背景透明，融入整体 */
+/* ===== Hero 区 ===== */
 .VPHero {
   background: transparent;
   position: relative;
@@ -21,74 +75,54 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(99, 102, 241, 0.18) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.14) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, var(--home-glow-a) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, var(--home-glow-b) 0%, transparent 50%);
   pointer-events: none;
 }
 
-/* Hero 文字颜色适配深色背景 */
-.VPHero .name     { color: #fff !important; }
-.VPHero .text     { color: rgba(255, 255, 255, 0.85) !important; }
-.VPHero .tagline  { color: rgba(255, 255, 255, 0.6) !important; }
+/* Hero 文字颜色 */
+.VPHero .name     { color: var(--home-hero-name)    !important; }
+.VPHero .text     { color: var(--home-hero-text)    !important; }
+.VPHero .tagline  { color: var(--home-hero-tagline) !important; }
 
-/* ===== Features 区域融入深色背景 ===== */
+/* ===== Features 区域 ===== */
 .VPFeatures {
   background: transparent;
 }
 
-/* Feature 卡片：半透明玻璃质感 */
+/* Feature 卡片 */
 .VPFeature {
-  background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: var(--home-card-bg) !important;
+  border: 1px solid var(--home-card-border) !important;
   backdrop-filter: blur(8px);
   transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
 }
 
 .VPFeature:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(99, 102, 241, 0.5) !important;
+  background: var(--home-card-bg-hover) !important;
+  border-color: var(--home-card-border-hover) !important;
   box-shadow: 0 4px 24px rgba(99, 102, 241, 0.15);
 }
 
-/* Feature 卡片文字适配深色背景 */
-.VPFeature .title   { color: #fff !important; }
-.VPFeature .details { color: rgba(255, 255, 255, 0.65) !important; }
+/* Feature 卡片文字 */
+.VPFeature .title   { color: var(--home-card-title)   !important; }
+.VPFeature .details { color: var(--home-card-details) !important; }
 
-/* ===== 整体页面背景（非首页文档页）保持浅色 ===== */
-:root {
-  --vp-c-bg: #fafbff;
-  --vp-c-bg-soft: #f0f2ff;
-}
-
-.dark {
-  --vp-c-bg: #0d0d1a;
-  --vp-c-bg-soft: #13132a;
-}
-
-/* ===== 品牌色：蓝紫色系 ===== */
-:root {
-  --vp-c-brand-1: #6366f1;
-  --vp-c-brand-2: #818cf8;
-  --vp-c-brand-3: #a5b4fc;
-  --vp-button-brand-bg: #6366f1;
-  --vp-button-brand-hover-bg: #4f46e5;
-}
-
-/* ===== 首页顶部导航栏：半透明深色，文字清晰可见 ===== */
+/* ===== 首页顶部导航栏 ===== */
 .Layout:has(.VPHome) .VPNav {
-  background: rgba(15, 12, 41, 0.75);
+  background: var(--home-nav-bg);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--home-nav-border);
 }
 
 .Layout:has(.VPHome) .VPNav .title,
 .Layout:has(.VPHome) .VPNav .VPNavBarTitle span,
 .Layout:has(.VPHome) .VPNavBarMenu .VPNavBarMenuLink,
 .Layout:has(.VPHome) .VPNavBarMenu a {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: var(--home-nav-text) !important;
 }
 
 .Layout:has(.VPHome) .VPNavBarMenu .VPNavBarMenuLink:hover,
 .Layout:has(.VPHome) .VPNavBarMenu a:hover {
-  color: #fff !important;
+  color: var(--home-nav-text-hover) !important;
 }
