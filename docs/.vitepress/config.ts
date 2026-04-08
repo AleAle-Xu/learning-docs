@@ -32,6 +32,15 @@ export default defineConfig({
         ],
       },
       {
+        text: 'Shell 脚本',
+        items: [
+          { text: 'Shell 是什么', link: '/shell/intro' },
+          { text: '特殊内置变量', link: '/shell/special-variables' },
+          { text: '参数解析模板', link: '/shell/arg-parsing' },
+          { text: '退出清理（trap）', link: '/shell/trap-cleanup' },
+        ],
+      },
+      {
         text: 'Docker',
         items: [
           { text: '代理配置', link: '/docker/proxy' },
