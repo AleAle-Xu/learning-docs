@@ -56,6 +56,13 @@ export default defineConfig({
               { text: 'fastsafetensors 导致内存溢出', link: '/issues/llm/fastsafetensors-oom' },
             ],
           },
+          {
+            text: '数据管理',
+            collapsed: false,
+            items: [
+              { text: '大数据集迁移到 Hugging Face', link: '/issues/data/hf-dataset-upload' },
+            ],
+          },
         ],
       },
     ],
