@@ -5,6 +5,9 @@ export default defineConfig({
   description: '个人学习笔记站点',
   base: '/learning-docs/',
   themeConfig: {
+    search: {
+      provider: 'local',
+    },
     nav: [
       { text: '首页', link: '/' },
       { text: 'Linux', link: '/linux/basics' },
