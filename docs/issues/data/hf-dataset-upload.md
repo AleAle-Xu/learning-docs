@@ -140,7 +140,7 @@ hf upload your-username/my-large-dataset ./data/ . \
 
 #### 4.3 上传超大文件夹（推荐，60GB+ 场景）
 
-普通 `upload` 命令会在一次 commit 中提交所有文件，文件过多时容易超时。对于 60GB+ 的数据集，推荐使用 `upload-large-folder`，它会自动分批提交，且支持��点续传：
+普通 `upload` 命令会在一次 commit 中提交所有文件，文件过多时容易超时。对于 60GB+ 的数据集，推荐使用 `upload-large-folder`，它会自动分批提交，且支持断点续传：
 
 ```bash
 hf upload-large-folder your-username/my-large-dataset ./large_folder/ --repo-type dataset
