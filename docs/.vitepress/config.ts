@@ -50,6 +50,12 @@ export default defineConfig({
         ],
       },
       {
+        text: 'Git',
+        items: [
+          { text: '代理配置', link: '/git/proxy' },
+        ],
+      },
+      {
         text: '实践问题',
         items: [
           {
