@@ -53,6 +53,7 @@ export default defineConfig({
         text: 'Git',
         items: [
           { text: '代理配置', link: '/git/proxy' },
+          { text: '忽略已追踪的文件', link: '/git/untrack-files' },
         ],
       },
       {
