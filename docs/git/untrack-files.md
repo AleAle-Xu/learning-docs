@@ -106,6 +106,15 @@ git push
 pip install git-filter-repo
 ```
 
+**⚠️ 操作前必须提交所有修改：**
+
+```bash
+# 确保工作区干净，否则 filter-repo 可能会使改动丢失
+git status
+git add .
+git commit -m "Save work before filter-repo"
+```
+
 **删除指定文件或目录：**
 
 ```bash
@@ -121,6 +130,18 @@ git filter-repo --path large_data/ --invert-paths
 
 ```bash
 git filter-repo --strip-blobs-bigger-than 10M
+```
+
+**重新添加远程仓库：**
+
+`git filter-repo` 执行后会自动删除所有远程仓库配置（防止误推送），需要手动重新添加：
+
+```bash
+# 查看当前远程仓库（应该为空）
+git remote -v
+
+# 重新添加远程仓库
+git remote add origin git@github.com:username/repo.git
 ```
 
 ### 方法 2：使用 BFG Repo-Cleaner
@@ -165,10 +186,17 @@ git gc --prune=now --aggressive
 
 **强制推送到远程：**
 
+由于历史已被重写，所有提交的 SHA 值都已改变，必须使用 `--force` 强制覆盖远程仓库：
+
 ```bash
+# 强制推送所有分支
 git push origin --force --all
+
+# 强制推送所有标签
 git push origin --force --tags
 ```
+
+> **警告**：`--force` 会覆盖远程仓库的历史，所有协作者的本地仓库都会与远程不兼容，必须重新 `clone`。务必提前通知团队成员。
 
 ---
 
