@@ -115,6 +115,32 @@ git add .
 git commit -m "Save work before filter-repo"
 ```
 
+**执行前先停止追踪目标路径：**
+
+在执行 `git filter-repo` 前，必须先用 `git rm --cached` 把目标文件或目录从当前索引中移除，并提交这次变更。这个步骤不是在清理历史，而是在告诉当前版本：“这些文件保留在本地，但不再由 Git 管理”。如果目标路径仍处于 tracked 状态就直接重写历史，工具在检出重写后的提交时，可能会把工作区里的同名文件也一起删除。
+
+```bash
+git rm -r --cached large_data/
+git add .gitignore
+git commit -m "Stop tracking large_data before history cleanup"
+```
+
+如果要清理多个目录，建议在同一次提交中全部执行 `git rm --cached`，并在同一条 `filter-repo` 命令中用多个 `--path` 一次性过滤：
+
+```bash
+git rm -r --cached large_data/ models/ checkpoints/
+git add .gitignore
+git commit -m "Stop tracking generated assets before history cleanup"
+
+git filter-repo \
+  --path large_data/ \
+  --path models/ \
+  --path checkpoints/ \
+  --invert-paths
+```
+
+不要在 `git rm --cached` 之后不提交就分多次运行 `filter-repo`。历史重写会重新检出工作区，未提交的“停止追踪”状态可能被覆盖；下一次再过滤其他目录时，该目录又会被 Git 视为 tracked，从而增加本地文件被删除的风险。
+
 **删除指定文件或目录：**
 
 ```bash
