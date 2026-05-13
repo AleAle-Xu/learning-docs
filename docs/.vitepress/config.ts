@@ -65,6 +65,7 @@ export default defineConfig({
             collapsed: false,
             items: [
               { text: 'fastsafetensors 导致内存溢出', link: '/issues/llm/fastsafetensors-oom' },
+              { text: 'W2SR LoRA 微调后无法停止', link: '/issues/llm/w2sr-lora-stop-instability' },
             ],
           },
           {
