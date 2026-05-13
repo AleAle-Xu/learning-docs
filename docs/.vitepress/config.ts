@@ -61,11 +61,11 @@ export default defineConfig({
         text: '实践问题',
         items: [
           {
-            text: '大语言模型部署',
+            text: '大语言模型',
             collapsed: false,
             items: [
               { text: 'fastsafetensors 导致内存溢出', link: '/issues/llm/fastsafetensors-oom' },
-              { text: 'W2SR LoRA 微调后无法停止', link: '/issues/llm/w2sr-lora-stop-instability' },
+              { text: '模型 LoRA 微调后无法正确停止回答', link: '/issues/llm/w2sr-lora-stop-instability' },
             ],
           },
           {
